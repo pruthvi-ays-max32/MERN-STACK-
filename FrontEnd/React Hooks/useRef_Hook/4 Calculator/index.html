@@ -1,0 +1,68 @@
+<script src="/FrontEnd/ReactEssencial/react.js"></script>
+<script src="/FrontEnd/ReactEssencial/reactDOM.js"></script>
+<script src="/FrontEnd/ReactEssencial/babel.js"></script>
+
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+
+  const App = () => {
+
+    let ref1 = React.useRef()
+    let ref2 = React.useRef()
+    const [result, setResult] = React.useState();
+
+    function handleAddClick(){
+      console.log(ref1.current.value);
+      setResult(parseInt(ref1.current.value) + parseInt(ref2.current.value))
+      console.log("Add CLicked")
+
+    }
+
+    function handleSubClick(){
+      setResult(parseInt(ref1.current.value) - parseInt(ref2.current.value))
+      console.log("Sub Clicked")
+
+    }
+
+    function handleMultClick(){
+      setResult(parseInt(ref1.current.value) * parseInt(ref2.current.value))
+      console.log("Mult Clicked")
+
+    }
+
+    function handleDivClick(){
+      setResult(parseInt(ref1.current.value) / parseInt(ref2.current.value))
+      console.log("Div Clicked")
+
+    }
+
+    function handleModClick(){
+      setResult(parseInt(ref1.current.value) % parseInt(ref2.current.value))
+      console.log("Mod Clicked")  
+    }
+
+    return(
+      <div>
+          <div>
+            <input type="Number" ref={ref1}/>
+            <input type="Number" ref={ref2}/>
+            <h3> {result} </h3>
+          </div>
+          <div>
+            <button onClick={handleAddClick}> ADD </button>
+            <button onClick={handleSubClick}> SUB </button>
+            <button onClick={handleMultClick}> MULT </button>
+            <button onClick={handleDivClick}> DIV </button>
+            <button onClick={handleModClick}> Modulus </button>
+          </div>
+          
+      </div>
+    )
+  }
+
+  const root = ReactDOM.createRoot(document.querySelector("#root"))
+  root.render(<App />)
+</script>
