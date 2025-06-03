@@ -1,0 +1,48 @@
+<script src="/FrontEnd/ReactEssencial/react.js"></script>
+<script src="/FrontEnd/ReactEssencial/reactDOM.js"></script>
+<script src="/FrontEnd/ReactEssencial/babel.js"></script>
+
+
+<div id="root"></div>
+
+
+<script type="text/babel">
+
+function App (){
+
+  // useState -> used to maintain the state of component and reflect changes in value inside the component.
+  // useState takes one argument as initial value and return a variable and a function to update the value of that variable.
+  const [sum , setSum]=React.useState(0);
+
+  // UseRef Hook : it is used to get reference of element.
+  // it returns the object named as "current" where we get a element and to get value use "ref_name.current.value"
+  // it always give value as string.
+  const ref1 = React.useRef();
+  const ref2 = React.useRef();
+
+  function handleClick(){
+    let num1 = parseInt(ref1.current.value);
+    let num2 = parseInt(ref2.current.value);
+    setSum(num1 + num2);
+  }
+
+  return (
+    <>
+    <div>
+      {/* ref is a pre-defined prop which takes the reference variable created using useRef*/}
+      <input ref={ref1} type="Number"/>
+      <input ref={ref2} type="Number"/>
+      <button onClick={handleClick}>Let's ADD</button>
+    </div>
+    <div>
+      <p> RESULT : <span>{sum}</span></p>
+    </div>
+      
+    </>
+  )
+}
+
+const root = ReactDOM.createRoot(document.querySelector("#root"))
+root.render(<App />)
+
+</script>

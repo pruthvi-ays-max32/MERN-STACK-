@@ -1,0 +1,61 @@
+<script src="/FrontEnd/ReactEssencial/react.js"></script>
+<script src="/FrontEnd/ReactEssencial/reactDOM.js"></script>
+<script src="/FrontEnd/ReactEssencial/babel.js"></script>
+
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+  function App() {
+
+    const ref1 = React.useRef();
+    const [result , setResult] = React.useState();
+
+    function handleClick() {
+      const input = ref1.current.value;
+      const num = Number(input);
+
+      if (!input.trim()) {
+        setResult("Please enter a number.");
+        return;
+      }
+
+      if (isNaN(num) || !Number.isInteger(num)) {
+        setResult("Please enter a valid integer.");
+        return;
+      }
+
+      if (num < 2) {
+        setResult(`${num} is not a prime number.`);
+        return;
+      }
+
+      let isPrime = true;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+          isPrime = false;
+          break;
+        }
+      }
+
+      setResult(isPrime ? `${num} is a prime number.` : `${num} is not a prime number.`);
+    }
+
+    return (
+      <>
+        <div>
+          <input type="Number" ref={ref1}/>
+          <button onClick={handleClick}> Check </button>
+        </div>
+        <div>
+          <p>Result : <span>{result}</span></p>
+        </div>
+      </>
+    )
+  }
+
+
+  const root = ReactDOM.createRoot(document.querySelector("#root"))
+  root.render(<App />)
+</script>

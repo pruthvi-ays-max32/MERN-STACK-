@@ -1,0 +1,36 @@
+
+<script src="/FrontEnd/ReactEssencial/react.js"></script>
+<script src="/FrontEnd/ReactEssencial/reactDOM.js"></script>
+<script src="/FrontEnd/ReactEssencial/babel.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+
+  // First Way : Functional Component using function keyword.
+  function App(){
+    // if we wanted to return multiple elements from single component then it should be wrapped using a container element / react fragment.
+    return (
+      <div>
+          <h1>Hello World </h1>
+          <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque non debitis rem totam. </p>
+      </div>
+    )
+  }
+
+
+  // // Second Way : Functional component using Arrow Function.
+  // const App = () => {
+  //   // if we wanted to return multiple elements from single component then it should be wrapped using a container element / react fragment.
+  //   return (
+  //     <div>
+  //         <h1>Challo World </h1>
+  //         <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque non debitis rem totam. </p>
+  //     </div>
+  //   )
+  // }
+
+  const root = ReactDOM.createRoot(document.querySelector('#root'))
+  root.render(<App />)
+</script>
