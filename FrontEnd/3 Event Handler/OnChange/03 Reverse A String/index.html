@@ -1,0 +1,39 @@
+<script src="/FrontEnd/ReactEssencial/react.js"></script>
+<script src="/FrontEnd/ReactEssencial/reactDOM.js"></script>
+<script src="/FrontEnd/ReactEssencial/babel.js"></script>
+
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+  function App () {
+
+    const [str , setStr] = React.useState("")
+    let str1;
+    
+    function handleChange(e){
+      str1 = e.target.value
+      str1 = str1.split("").reverse().join("")
+    }
+
+    function handleClick(){
+      setStr(str1)
+    }
+
+
+    return (
+      <div>
+        <input onChange={handleChange} />
+        <button onClick={handleClick}> Reverse </button>
+        <h3> Reversed String :  <span>{str}</span></h3>
+      </div>
+    )
+  }
+
+
+
+  const root = ReactDOM.createRoot(document.querySelector("#root"))
+  root.render(<App />)
+
+</script>
