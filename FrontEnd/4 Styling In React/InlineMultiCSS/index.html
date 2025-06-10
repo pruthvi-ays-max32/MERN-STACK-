@@ -1,0 +1,52 @@
+<script src="/FrontEnd/ReactEssencial/react.js"></script>
+<script src="/FrontEnd/ReactEssencial/reactDOM.js"></script>
+<script src="/FrontEnd/ReactEssencial/babel.js"></script>
+
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+
+  const App = () => {
+    const [sum, setSum] = React.useState(0);
+    const [numbers, setNumbers] = React.useState({})
+
+    const [styleObj, setStyleObj] = React.useState({ color: "", fontSize: "" });
+
+    function handleClick() {
+      const { n1, n2 } = numbers
+      let num1 = parseInt(n1);
+      let num2 = parseInt(n2);
+      let sum = num1 + num2;
+      setSum(sum)
+
+      if (sum < 100) {
+        setStyleObj({ color: "green", fontSize: "32px" })
+      } else {
+        setStyleObj({ color: "red", fontSize: "22px" })
+      }
+    }
+
+    function handleChange(e) {
+      const { id, value } = e.target
+      setNumbers({ ...numbers, [id]: value })
+    }
+
+    return (
+      <div>
+        <div>
+          <input id="n1" type="Number" onChange={handleChange} />
+          <input id="n2" type="Number" onChange={handleChange} />
+          <button onClick={handleClick}>Let's ADD</button>
+        </div>
+        <div>
+          <p> RESULT : <span style={styleObj}>{sum}</span></p>
+        </div>
+      </div>
+    )
+  }
+
+  const root = ReactDOM.createRoot(document.querySelector("#root"))
+  root.render(<App />)
+</script>
